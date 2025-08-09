@@ -1,4 +1,4 @@
-import { Todo } from "../schemas/todo-contract";
+import { Todo } from "../schemas/todo.contract";
 
 export function makeNewToDo(description: string): Todo {
     return {

@@ -1,7 +1,8 @@
 import * as sanitizeStrMod from "@/utils/sanitize-str";
-import { makeValidatedTodo, ValidTodo, InvalidTodo } from "./make-validated-todo";
+import { makeValidatedTodo } from "./make-validated-todo";
 import * as makeNewTodoMod from "./make-new-todo";
 import * as validateTodoDescriptionMod from "../schemas/validate-todo-description";
+import { InvalidTodo, ValidTodo } from "../schemas/todo.contract";
 
 describe('makeValidatedTodo (unit)', () => {
     test('Should call sanitizeStr function with correct value', () => {
@@ -36,9 +37,9 @@ describe('makeValidatedTodo (unit)', () => {
         // console.log(result);
 
         expect(result.success).toBe(true);
-        expect(result.data.createdAt)
+        expect(result.todo.createdAt)
         .toMatch(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}Z/); // '2025-07-27T15:06:47.153Z'
-        expect(result.data).toStrictEqual(
+        expect(result.todo).toStrictEqual(
             expect.objectContaining({
                 description: "abcd",
                 id: "any-id",
